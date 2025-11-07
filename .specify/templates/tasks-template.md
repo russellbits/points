@@ -8,7 +8,7 @@ description: "Task list template for feature implementation"
 **Input**: Design documents from `/specs/[###-feature-name]/`
 **Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
-**Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
+**Tests**: Per project constitution (Principle I), this project does NOT include automated tests. Manual testing and code review ensure quality.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
@@ -20,10 +20,12 @@ description: "Task list template for feature implementation"
 
 ## Path Conventions
 
-- **Single project**: `src/`, `tests/` at repository root
-- **Web app**: `backend/src/`, `frontend/src/`
-- **Mobile**: `api/src/`, `ios/src/` or `android/src/`
-- Paths shown below assume single project - adjust based on plan.md structure
+- **SvelteKit project**: `src/lib/`, `src/routes/`, `static/` at repository root
+- Components go in `src/lib/components/`
+- Stores go in `src/lib/stores/`
+- Routes follow file-based routing in `src/routes/`
+- Layouts: `+layout.svelte`, Pages: `+page.svelte`, Server code: `+page.server.js`
+- Paths shown below assume SvelteKit structure - adjust based on plan.md
 
 <!-- 
   ============================================================================
@@ -62,12 +64,13 @@ description: "Task list template for feature implementation"
 
 Examples of foundational tasks (adjust based on your project):
 
-- [ ] T004 Setup database schema and migrations framework
-- [ ] T005 [P] Implement authentication/authorization framework
-- [ ] T006 [P] Setup API routing and middleware structure
-- [ ] T007 Create base models/entities that all stories depend on
-- [ ] T008 Configure error handling and logging infrastructure
-- [ ] T009 Setup environment configuration management
+- [ ] T004 Setup base layout and styling framework
+- [ ] T005 [P] Create reusable component library structure with Bits UI
+- [ ] T006 [P] Setup routing structure in src/routes/
+- [ ] T007 Create base Svelte stores for shared state management
+- [ ] T008 Configure error handling and user feedback patterns
+- [ ] T009 Setup responsive design breakpoints and utilities
+- [ ] T010 Configure ESLint and Prettier (required per constitution)
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -77,25 +80,19 @@ Examples of foundational tasks (adjust based on your project):
 
 **Goal**: [Brief description of what this story delivers]
 
-**Independent Test**: [How to verify this story works on its own]
-
-### Tests for User Story 1 (OPTIONAL - only if tests requested) ⚠️
-
-> **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
-
-- [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
+**Independent Test**: [How to manually verify this story works on its own]
 
 ### Implementation for User Story 1
 
-- [ ] T012 [P] [US1] Create [Entity1] model in src/models/[entity1].py
-- [ ] T013 [P] [US1] Create [Entity2] model in src/models/[entity2].py
-- [ ] T014 [US1] Implement [Service] in src/services/[service].py (depends on T012, T013)
-- [ ] T015 [US1] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T016 [US1] Add validation and error handling
-- [ ] T017 [US1] Add logging for user story 1 operations
+- [ ] T011 [P] [US1] Create [Component1] component in src/lib/components/[component1].svelte
+- [ ] T012 [P] [US1] Create [Component2] component in src/lib/components/[component2].svelte
+- [ ] T013 [P] [US1] Create [Store] for state management in src/lib/stores/[store].js
+- [ ] T014 [US1] Implement [route/page] in src/routes/[path]/+page.svelte
+- [ ] T015 [US1] Add form validation and error handling
+- [ ] T016 [US1] Ensure responsive design across mobile/tablet/desktop
+- [ ] T017 [US1] Manual testing checklist: [list key scenarios to verify]
 
-**Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
+**Checkpoint**: At this point, User Story 1 should be fully functional and manually testable
 
 ---
 
@@ -103,19 +100,16 @@ Examples of foundational tasks (adjust based on your project):
 
 **Goal**: [Brief description of what this story delivers]
 
-**Independent Test**: [How to verify this story works on its own]
-
-### Tests for User Story 2 (OPTIONAL - only if tests requested) ⚠️
-
-- [ ] T018 [P] [US2] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T019 [P] [US2] Integration test for [user journey] in tests/integration/test_[name].py
+**Independent Test**: [How to manually verify this story works on its own]
 
 ### Implementation for User Story 2
 
-- [ ] T020 [P] [US2] Create [Entity] model in src/models/[entity].py
-- [ ] T021 [US2] Implement [Service] in src/services/[service].py
-- [ ] T022 [US2] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T023 [US2] Integrate with User Story 1 components (if needed)
+- [ ] T018 [P] [US2] Create [Component] in src/lib/components/[component].svelte
+- [ ] T019 [P] [US2] Create [Store] for state in src/lib/stores/[store].js
+- [ ] T020 [US2] Implement [route/page] in src/routes/[path]/+page.svelte
+- [ ] T021 [US2] Integrate with User Story 1 components (if needed)
+- [ ] T022 [US2] Ensure responsive design compliance
+- [ ] T023 [US2] Manual testing checklist: [list key scenarios to verify]
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 
@@ -125,18 +119,15 @@ Examples of foundational tasks (adjust based on your project):
 
 **Goal**: [Brief description of what this story delivers]
 
-**Independent Test**: [How to verify this story works on its own]
-
-### Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
-
-- [ ] T024 [P] [US3] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T025 [P] [US3] Integration test for [user journey] in tests/integration/test_[name].py
+**Independent Test**: [How to manually verify this story works on its own]
 
 ### Implementation for User Story 3
 
-- [ ] T026 [P] [US3] Create [Entity] model in src/models/[entity].py
-- [ ] T027 [US3] Implement [Service] in src/services/[service].py
-- [ ] T028 [US3] Implement [endpoint/feature] in src/[location]/[file].py
+- [ ] T024 [P] [US3] Create [Component] in src/lib/components/[component].svelte
+- [ ] T025 [P] [US3] Create [Store] for state in src/lib/stores/[store].js
+- [ ] T026 [US3] Implement [route/page] in src/routes/[path]/+page.svelte
+- [ ] T027 [US3] Ensure responsive design compliance
+- [ ] T028 [US3] Manual testing checklist: [list key scenarios to verify]
 
 **Checkpoint**: All user stories should now be independently functional
 
@@ -150,12 +141,14 @@ Examples of foundational tasks (adjust based on your project):
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] TXXX [P] Documentation updates in docs/
+- [ ] TXXX [P] Documentation updates in docs/ or README.md
 - [ ] TXXX Code cleanup and refactoring
 - [ ] TXXX Performance optimization across all stories
-- [ ] TXXX [P] Additional unit tests (if requested) in tests/unit/
-- [ ] TXXX Security hardening
-- [ ] TXXX Run quickstart.md validation
+- [ ] TXXX ESLint and Prettier cleanup (required per constitution)
+- [ ] TXXX Responsive design validation across all viewports
+- [ ] TXXX Accessibility improvements (ARIA labels, keyboard navigation)
+- [ ] TXXX Bundle size optimization
+- [ ] TXXX Run quickstart.md validation (manual testing)
 
 ---
 
@@ -178,19 +171,18 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Within Each User Story
 
-- Tests (if included) MUST be written and FAIL before implementation
-- Models before services
-- Services before endpoints
+- Components before pages/routes
+- Stores before components that use them
 - Core implementation before integration
-- Story complete before moving to next priority
+- Story complete (and manually tested) before moving to next priority
 
 ### Parallel Opportunities
 
 - All Setup tasks marked [P] can run in parallel
 - All Foundational tasks marked [P] can run in parallel (within Phase 2)
 - Once Foundational phase completes, all user stories can start in parallel (if team capacity allows)
-- All tests for a user story marked [P] can run in parallel
-- Models within a story marked [P] can run in parallel
+- Components within a story marked [P] can run in parallel
+- Stores within a story marked [P] can run in parallel
 - Different user stories can be worked on in parallel by different team members
 
 ---
@@ -198,13 +190,10 @@ Examples of foundational tasks (adjust based on your project):
 ## Parallel Example: User Story 1
 
 ```bash
-# Launch all tests for User Story 1 together (if tests requested):
-Task: "Contract test for [endpoint] in tests/contract/test_[name].py"
-Task: "Integration test for [user journey] in tests/integration/test_[name].py"
-
-# Launch all models for User Story 1 together:
-Task: "Create [Entity1] model in src/models/[entity1].py"
-Task: "Create [Entity2] model in src/models/[entity2].py"
+# Launch all components for User Story 1 together:
+Task: "Create [Component1] component in src/lib/components/[component1].svelte"
+Task: "Create [Component2] component in src/lib/components/[component2].svelte"
+Task: "Create [Store] for state management in src/lib/stores/[store].js"
 ```
 
 ---
@@ -240,12 +229,22 @@ With multiple developers:
 
 ---
 
+## docs: establish project constitution v1.0.0
+
+- Define 5 core principles: No Testing (supersedes all), Clean Code, Simple UX, Responsive Design, Minimal Dependencies
+- Establish required tech stack: Svelte 5, SvelteKit, Bits UI
+- Update plan-template.md with SvelteKit structure and constitution check
+- Update tasks-template.md to remove all testing tasks, add manual testing guidance
+- Add governance rules for constitution amendments and compliance
+
+---
+
 ## Notes
 
 - [P] tasks = different files, no dependencies
 - [Story] label maps task to specific user story for traceability
-- Each user story should be independently completable and testable
-- Verify tests fail before implementing
+- Each user story should be independently completable and manually testable
 - Commit after each task or logical group
-- Stop at any checkpoint to validate story independently
+- Stop at any checkpoint to validate story independently (via manual testing)
 - Avoid: vague tasks, same file conflicts, cross-story dependencies that break independence
+- **No automated tests**: Manual testing via browser and code review only (per constitution)

@@ -17,21 +17,29 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Framework**: Svelte 5 + SvelteKit (required per constitution)
+**Component Library**: Bits UI (required per constitution)
+**Language/Version**: JavaScript (per jsconfig.json)
+**Primary Dependencies**: [list key dependencies beyond required stack or NEEDS CLARIFICATION]  
+**Storage**: [if applicable, e.g., localStorage, IndexedDB, API backend or N/A]  
+**Target Platform**: Modern browsers (mobile + desktop, responsive design required)
+**Project Type**: web - SvelteKit application  
+**Performance Goals**: [domain-specific, e.g., <3s initial load, 60fps animations or NEEDS CLARIFICATION]  
+**Constraints**: [domain-specific, e.g., mobile-first, offline capability, accessibility or NEEDS CLARIFICATION]  
+**Scale/Scope**: [domain-specific, e.g., expected users, data volume, feature count or NEEDS CLARIFICATION]
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+**✅ No Testing**: Confirmed - no test files or testing frameworks will be included
+**✅ Clean Code**: ESLint + Prettier configured and must be followed
+**✅ Simple UX**: Feature design prioritizes intuitive, minimal interaction patterns
+**✅ Responsive Design**: All UI components must work on mobile, tablet, and desktop
+**✅ Minimal Dependencies**: New dependencies justified - alternatives considered
+**✅ Technology Stack**: Using Svelte 5, SvelteKit, and Bits UI as required
+
+*If any principle cannot be met, document justification in Complexity Tracking section below.*
 
 ## Project Structure
 
@@ -51,48 +59,37 @@ specs/[###-feature]/
 <!--
   ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
   for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
+  real paths (e.g., src/routes/feature-name, src/lib/components/FeatureName).
+  The delivered plan must not include Option labels.
 -->
 
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
+# SvelteKit Application Structure (DEFAULT for this project)
 src/
-├── models/
-├── services/
-├── cli/
-└── lib/
+├── lib/
+│   ├── components/        # Reusable Svelte components (using Bits UI)
+│   ├── stores/           # Svelte stores for state management
+│   ├── utils/            # Utility functions and helpers
+│   ├── assets/           # Static assets (images, icons, etc.)
+│   └── index.js          # Public exports from lib
+├── routes/               # SvelteKit file-based routing
+│   ├── +layout.svelte    # Root layout
+│   ├── +page.svelte      # Home page
+│   └── [feature]/        # Feature-specific routes
+│       ├── +page.svelte
+│       └── +page.js      # Optional: load function, actions
+├── app.html              # HTML template
+└── app.d.ts              # TypeScript definitions
 
-tests/
-├── contract/
-├── integration/
-└── unit/
+static/                   # Static files served at root
+└── robots.txt
 
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+# NOTE: No tests/ directory - manual testing only per constitution
 ```
 
 **Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+directories captured above. For this SvelteKit project, specify which routes and
+components will be added for this feature.]
 
 ## Complexity Tracking
 

@@ -27,10 +27,14 @@
 		"mdsvex": "^0.12.6",
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
+		"shadcn": "^3.5.0",
 		"svelte": "^5.41.0",
 		"svelte-check": "^4.3.3",
 		"typescript": "^5.9.3",
 		"vite": "^7.1.10",
 		"vite-plugin-devtools-json": "^1.0.0"
+	},
+	"dependencies": {
+		"bits-ui": "^2.14.2"
 	}
 }
