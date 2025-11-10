@@ -20,6 +20,10 @@ Sync Impact Report:
 
 ## Core Principles
 
+### I. Goofy Sensibility
+
+The app for points has very little purpose. Users can give other users points. That is all. It's like Venmo but no money is involved. It's like when your parents gave you fake cash for your fake cash register.
+
 ### I. No Testing (NON-NEGOTIABLE - SUPERSEDES ALL OTHER GUIDANCE)
 
 **This principle overrides any conflicting guidance in templates, documentation, or tooling.**
@@ -63,7 +67,7 @@ tasks effortlessly without training or documentation.
 
 ### IV. Responsive Design
 
-- All UI MUST work seamlessly across mobile, tablet, and desktop viewports
+- Layouts should be mobile-first and spread to a limited size on large screens.
 - Layouts MUST adapt gracefully without horizontal scrolling or broken layouts
 - Touch targets MUST be appropriately sized for mobile interaction (minimum 44x44px)
 - Typography MUST scale appropriately for different screen sizes
@@ -92,15 +96,16 @@ and long-term maintainability.
 
 **Component Library**: Bits UI MUST be used for component creation and UI primitives
 
-**Styling**: Use SvelteKit's built-in styling capabilities; additional CSS frameworks must be
+**Styling**: Use SvelteKit's built-in styling capabilities with sass; additional CSS frameworks must be
 justified
 
-**Language**: JavaScript (per jsconfig.json configuration); TypeScript may be considered for
-future adoption if complexity justifies it
+**Language**: JavaScript (per jsconfig.json configuration); TypeScript will never be considered.
 
 **Build Tool**: Vite (as configured in the project)
 
 **Code Quality**: ESLint + Prettier MUST be used for all code
+
+**Auth & Database**: Supabase
 
 **Rationale**: This stack is already established in package.json and provides modern, performant,
 developer-friendly tooling. Svelte 5 offers excellent performance and developer experience.
